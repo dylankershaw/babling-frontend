@@ -1,32 +1,37 @@
-import React from 'react';
-
-
+import React from "react";
+import Login from "./Login";
+import Signup from "./Signup";
 
 class AuthContainer extends React.Component {
-
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-      selection: 'Login'
-    }
+      selection: "Login"
+    };
   }
 
-  render(){
+  changeSelection = selection => {
+    this.setState({ selection });
+  };
 
-    
-    if (this.state.selection === 'Login'){
-      return(
-        <p>yoo</p>
-      )
+  render() {
+    if (this.state.selection === "Login") {
+      return (
+        <Login
+          changeSelection={this.changeSelection}
+          setUser={this.props.setUser}
+        />
+      );
     } else {
-      return(
-        <p>sup</p>
-      )
+      return (
+        <Signup
+          changeSelection={this.changeSelection}
+          setUser={this.props.setUser}
+        />
+      );
     }
-
   }
-
 }
 
-export default AuthContainer
+export default AuthContainer;
