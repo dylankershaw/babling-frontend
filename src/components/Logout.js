@@ -1,17 +1,13 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-
-const Logout = () =>{
-
-
+const Logout = ({ user }) => {
   return (
     <div>
-      Welcome name
-      <Link to={'/'}> Logout </Link>
+      Welcome {user.username}
+      <Link to={"/"}> Logout </Link>
     </div>
-
-  )
-}
+  );
+};
 
 export default Logout;

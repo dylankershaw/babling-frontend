@@ -1,22 +1,16 @@
-import React from 'react';
-import Logout from './Logout';
-import ChatsContainer from './ChatsContainer';
+import React from "react";
+import Logout from "./Logout";
+import ChatsContainer from "./ChatsContainer";
 // import NewChatContainer from './NewChatContainer;'
 
-const ChatSelector = () => {
-
-
+const ChatSelector = ({ user }) => {
   return (
     <div>
-
-      <Logout/>
-      <ChatsContainer/>
+      <Logout user={user} />
+      <ChatsContainer user={user} />
       {/* <NewChatContainer/> */}
-
-
     </div>
-  )
-}
-
+  );
+};
 
 export default ChatSelector;
