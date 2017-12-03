@@ -2,6 +2,7 @@ import React from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 import { debug } from "util";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 class AuthContainer extends React.Component {
   constructor(props) {
@@ -24,8 +25,8 @@ class AuthContainer extends React.Component {
         return user.username.toLowerCase() === username.toLowerCase();
       });
       this.props.setUser(user);
+      this.props.redirect();
     };
-    // change url to /chat-selector
   };
 
   changeSelection = selection => {
