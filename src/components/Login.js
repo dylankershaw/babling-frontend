@@ -1,15 +1,15 @@
 import React from "react";
 
 const Login = props => {
-  // const handleSubmit = ev => {
-  //   ev.preventDefault(); // is this necessary?
-  //   const username = document.getElementById("username").value;
-  //   props.fetchUser(username);
-  // };
+  const handleSubmit = ev => {
+    ev.preventDefault(); // is this necessary?
+    const username = document.getElementById("username").value;
+    props.fetchUser(username);
+  };
 
   return (
     <div>
-      <form>
+      <form onSubmit={ev => handleSubmit(ev)}>
         <label htmlFor="username">Username: </label>
         <input id="username" />
         <br />

@@ -16,19 +16,18 @@ class App extends Component {
     };
   }
 
-  // setUser = user => {
-  //   console.log("setting user");
-  //   this.setState({ user });
-  // };
+  setUser = user => {
+    console.log("setting user");
+    this.setState({ user });
+  };
 
-  // componentDidUpdate() {
-  //   // if a user is logged in, redirect them to chat-selector
-  //   if (Object.keys(this.state.user).length > 0) {
-  //     console.log("logged in");
-  //     console.log(this.state.user);
-  //     console.log(this.props);
-  //   }
-  // }
+  componentDidUpdate() {
+    // if a user is logged in, redirect them to chat-selector
+    if (Object.keys(this.state.user).length > 0) {
+      console.log("logged in");
+      console.log(this.state.user);
+    }
+  }
 
   render() {
     return (
@@ -37,7 +36,9 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={props => <AuthContainer {...props} />}
+            render={props => (
+              <AuthContainer {...props} setUser={this.setUser} />
+            )}
           />
           <Route
             exact
