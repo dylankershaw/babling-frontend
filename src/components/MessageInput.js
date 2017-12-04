@@ -14,10 +14,10 @@ const MessageInput = ({ chatId, senderName }) => {
       method: "POST",
       body: JSON.stringify({
         chat_id: chatId,
-        senderName: senderName
+        sender_name: senderName
       }),
       headers: { "Content-Type": "application/json" }
-    }).then(postTranslation(messageText, language));
+    }).then(resp => postTranslation(messageText, language));
   };
 
   const postTranslation = (messageText, language) => {
@@ -33,7 +33,7 @@ const MessageInput = ({ chatId, senderName }) => {
   };
 
   // associate the translation with the message
-  // rails checks to see if there is a translation for each language within the chat
+  // check to see if there is a translation for each language within the chat
   // if not, then call yandex and create translation(s)
 
   return (
