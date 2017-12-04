@@ -17,31 +17,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      user: {
-        id: 2,
-        username: "Dylan",
-        chats: [
-          {
-            id: 2,
-            users: [
-              {
-                id: 2,
-                username: "Dylan",
-                created_at: "2017-12-01T16:38:12.777Z",
-                updated_at: "2017-12-01T16:38:12.777Z",
-                password: null
-              },
-              {
-                id: 3,
-                username: "Elbin",
-                created_at: "2017-12-01T16:38:15.975Z",
-                updated_at: "2017-12-01T16:38:15.975Z",
-                password: null
-              }
-            ]
-          }
-        ]
-      },
+      user: {},
       chat: {},
       redirect: false
     };
@@ -50,6 +26,13 @@ class App extends Component {
   setChat = chat => {
     console.log("setting chat");
     this.setState({ chat });
+  };
+
+  clearChat = () => {
+    this.setState({
+      redirect: true,
+      chat: {}
+    });
   };
 
   setUser = user => {
@@ -137,6 +120,7 @@ class App extends Component {
                 user={this.state.user}
                 chat={this.state.chat}
                 redirect={this.redirect}
+                clearChat={this.clearChat}
               />
             )}
           />
