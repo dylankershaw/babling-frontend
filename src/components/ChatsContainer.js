@@ -1,7 +1,7 @@
 import React from "react";
 import ChatLink from "./ChatLink";
 
-const ChatsContainer = ({ user, setChat }) => {
+const ChatsContainer = ({ user, setChat, redirect }) => {
   // returns the user in a chat who is not the current user
   function getUsername(users, currentUser) {
     return users.find(user => {
@@ -21,7 +21,8 @@ const ChatsContainer = ({ user, setChat }) => {
             key={chat.id}
             id={chat.id}
             username={getUsername(chat.users, user).username}
-            setChat={this.setChat}
+            setChat={setChat}
+            redirect={redirect}
           />
         );
       })}

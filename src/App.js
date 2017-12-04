@@ -40,7 +40,8 @@ class App extends Component {
   render() {
     if (
       Object.keys(this.state.user).length > 0 &&
-      this.state.redirect === true
+      this.state.redirect === true &&
+      Object.keys(this.state.chat).length === 0
     ) {
       this.setState({ redirect: false });
       console.log("logged in");
@@ -49,18 +50,29 @@ class App extends Component {
           <Redirect to="/chat-selector" />
         </Router>
       );
-      // } else if (
-      //   //// need to make this work
-      //   Object.keys(this.state.user).length === 0 &&
-      //   this.props.location.split("/").slice(-1)[0] !== ""
-      // ) {
-      //   console.log("not logged in");
-      //   // return (
-      //   //   <Router>
-      //   //     <Redirect to="/" />
-      //   //   </Router>
-      //   // );
+    } else if (
+      Object.keys(this.state.chat).length > 0 &&
+      this.state.redirect === true
+    ) {
+      this.setState({ redirect: false });
+      return (
+        <Router>
+          <Redirect to="/chatroom" />
+        </Router>
+      );
     }
+    // } else if (
+    //   //// need to make this work
+    //   Object.keys(this.state.user).length === 0 &&
+    //   this.props.location.split("/").slice(-1)[0] !== ""
+    // ) {
+    //   console.log("not logged in");
+    //   // return (
+    //   //   <Router>
+    //   //     <Redirect to="/" />
+    //   //   </Router>
+    //   // );
+
     return (
       <Router>
         <div>
@@ -83,6 +95,7 @@ class App extends Component {
                 {...props}
                 user={this.state.user}
                 setChat={this.setChat}
+                redirect={this.redirect}
               />
             )}
           />
