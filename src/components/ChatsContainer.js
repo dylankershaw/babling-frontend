@@ -1,7 +1,7 @@
 import React from "react";
 import ChatLink from "./ChatLink";
 
-const ChatsContainer = ({ user }) => {
+const ChatsContainer = ({ user, setChat }) => {
   // returns the user in a chat who is not the current user
   function getUsername(users, currentUser) {
     return users.find(user => {
@@ -9,6 +9,7 @@ const ChatsContainer = ({ user }) => {
     });
   }
 
+  //// need to safeguard against a user having no chats (cannot map on undefined)
   user.chats.map(chat => {});
 
   return (
@@ -20,6 +21,7 @@ const ChatsContainer = ({ user }) => {
             key={chat.id}
             id={chat.id}
             username={getUsername(chat.users, user).username}
+            setChat={this.setChat}
           />
         );
       })}

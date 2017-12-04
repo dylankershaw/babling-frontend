@@ -10,7 +10,7 @@ import {
 import AuthContainer from "./components/AuthContainer";
 import ChatSelector from "./components/ChatSelector";
 import { debug } from "util";
-// import ChatRoomContainer from './components/ChatRoomContainer';
+import ChatroomContainer from "./components/ChatroomContainer";
 
 class App extends Component {
   constructor(props) {
@@ -18,9 +18,15 @@ class App extends Component {
 
     this.state = {
       user: {},
+      chat: {},
       redirect: false
     };
   }
+
+  setChat = chat => {
+    console.log("setting chat");
+    this.setState({ chat });
+  };
 
   setUser = user => {
     console.log("setting user");
@@ -43,8 +49,17 @@ class App extends Component {
           <Redirect to="/chat-selector" />
         </Router>
       );
-    } else {
-      console.log("not logged in");
+      // } else if (
+      //   //// need to make this work
+      //   Object.keys(this.state.user).length === 0 &&
+      //   this.props.location.split("/").slice(-1)[0] !== ""
+      // ) {
+      //   console.log("not logged in");
+      //   // return (
+      //   //   <Router>
+      //   //     <Redirect to="/" />
+      //   //   </Router>
+      //   // );
     }
     return (
       <Router>
@@ -63,9 +78,20 @@ class App extends Component {
           <Route
             exact
             path="/chat-selector"
-            render={props => <ChatSelector {...props} user={this.state.user} />}
+            render={props => (
+              <ChatSelector
+                {...props}
+                user={this.state.user}
+                setChat={this.setChat}
+              />
+            )}
           />
-          {/* <Route exact path='/chatroom' component={ChatRoomContainer}/> */}
+          <Route
+            exact
+            path="/chatroom"
+            component={ChatroomContainer}
+            chat={this.state.chat}
+          />
         </div>
       </Router>
     );
