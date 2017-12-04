@@ -17,7 +17,31 @@ class App extends Component {
     super(props);
 
     this.state = {
-      user: {},
+      user: {
+        id: 2,
+        username: "Dylan",
+        chats: [
+          {
+            id: 2,
+            users: [
+              {
+                id: 2,
+                username: "Dylan",
+                created_at: "2017-12-01T16:38:12.777Z",
+                updated_at: "2017-12-01T16:38:12.777Z",
+                password: null
+              },
+              {
+                id: 3,
+                username: "Elbin",
+                created_at: "2017-12-01T16:38:15.975Z",
+                updated_at: "2017-12-01T16:38:15.975Z",
+                password: null
+              }
+            ]
+          }
+        ]
+      },
       chat: {},
       redirect: false
     };
@@ -37,13 +61,18 @@ class App extends Component {
     this.setState({ redirect: true });
   };
 
+  //// does this need to be in a callback or can it happen inline?
+  redirectOff = () => {
+    this.setState({ redirect: false });
+  };
+
   render() {
     if (
       Object.keys(this.state.user).length > 0 &&
       this.state.redirect === true &&
       Object.keys(this.state.chat).length === 0
     ) {
-      this.setState({ redirect: false });
+      this.redirectOff();
       console.log("logged in");
       return (
         <Router>
@@ -54,7 +83,7 @@ class App extends Component {
       Object.keys(this.state.chat).length > 0 &&
       this.state.redirect === true
     ) {
-      this.setState({ redirect: false });
+      this.redirectOff();
       return (
         <Router>
           <Redirect to="/chatroom" />
@@ -102,8 +131,13 @@ class App extends Component {
           <Route
             exact
             path="/chatroom"
-            component={ChatroomContainer}
-            chat={this.state.chat}
+            render={props => (
+              <ChatroomContainer
+                {...props}
+                chat={this.state.chat}
+                redirect={this.redirect}
+              />
+            )}
           />
         </div>
       </Router>
