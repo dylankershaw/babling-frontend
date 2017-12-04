@@ -22,6 +22,9 @@ class ChatBoxContainer extends React.Component {
       // debugger;
       messages.push(message);
     }
+    messages.sort(function(a, b) {
+      return a.created_at - b.created_at;
+    });
     this.setState({ messages });
   };
 
@@ -61,11 +64,9 @@ class ChatBoxContainer extends React.Component {
   render() {
     return (
       <div>
-        {this.state.messages
-          .sort(function(a, b) {
-            return a.created_at - b.created_at;
-          })
-          .map(message => <Message key={message.id} message={message} />)}
+        {this.state.messages.map(message => (
+          <Message key={message.id} message={message} />
+        ))}
       </div>
     );
   }

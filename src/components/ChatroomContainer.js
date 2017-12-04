@@ -5,20 +5,41 @@ import Logout from "./Logout";
 import ChatsButton from "./ChatsButton";
 import SelectLanguageContainer from "./SelectLanguageContainer";
 
-const ChatroomContainer = ({ chat, user, clearChat }) => {
-  return (
-    <div>
-      <Logout user={user} />
-      <br />
-      <ChatsButton clearChat={clearChat} />
-      <br />
-      <ChatBoxContainer chat={chat} />
-      <MessageInput chatId={chat.id} senderName={user.username} />
-      <br />
-      <br />
-      <SelectLanguageContainer />
-    </div>
-  );
-};
+class ChatroomContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedLanguage: "en"
+    };
+  }
+
+  setLanguage = language => {
+    this.setState({ selectedLanguage: language });
+  };
+
+  componentDidUpdate() {
+    console.log(this.state.selectedLanguage);
+  }
+
+  render() {
+    return (
+      <div>
+        <Logout user={this.props.user} />
+        <br />
+        <ChatsButton clearChat={this.props.clearChat} />
+        <br />
+        <ChatBoxContainer chat={this.props.chat} />
+        <MessageInput
+          chatId={this.props.chat.id}
+          senderName={this.props.user.username}
+          selectedLanguage={this.state.selectedLanguage}
+        />
+        <br />
+        <br />
+        <SelectLanguageContainer setLanguage={this.setLanguage} />
+      </div>
+    );
+  }
+}
 
 export default ChatroomContainer;

@@ -1,11 +1,11 @@
 import React from "react";
 
-const MessageInput = ({ chatId, senderName }) => {
+const MessageInput = ({ chatId, senderName, selectedLanguage }) => {
   const handleSubmit = ev => {
     ev.preventDefault();
     const messageText = document.getElementById("message-text").value;
     document.getElementById("message-text").value = "";
-    postMessage(chatId, messageText, "english", senderName);
+    postMessage(chatId, messageText, selectedLanguage, senderName);
   };
 
   const postMessage = (chatId, messageText, language, senderName) => {

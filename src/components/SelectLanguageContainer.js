@@ -3,9 +3,6 @@ import React from "react";
 class SelectLanguageContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedLanguage: { longform: "English", id: "en" }
-    };
   }
 
   languages = [
@@ -21,10 +18,18 @@ class SelectLanguageContainer extends React.Component {
     { text: "Yiddish", id: "yi", key: 9 }
   ];
 
+  onChange = ev => {
+    this.props.setLanguage(ev.target.value);
+  };
+
   render() {
     return (
       <div>
-        <select>
+        <select
+          onChange={ev => {
+            this.onChange(ev);
+          }}
+        >
           {this.languages.map(language => {
             return <option value={language.id}>{language.text}</option>;
           })}
