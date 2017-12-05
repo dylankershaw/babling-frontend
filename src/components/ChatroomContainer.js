@@ -28,7 +28,10 @@ class ChatroomContainer extends React.Component {
         <br />
         <ChatsButton clearChat={this.props.clearChat} />
         <br />
-        <ChatBoxContainer chat={this.props.chat} />
+        <ChatBoxContainer
+          chat={this.props.chat}
+          selectedLanguage={this.state.selectedLanguage}
+        />
         <MessageInput
           chatId={this.props.chat.id}
           senderName={this.props.user.username}
@@ -36,7 +39,10 @@ class ChatroomContainer extends React.Component {
         />
         <br />
         <br />
-        <SelectLanguageContainer setLanguage={this.setLanguage} />
+        <SelectLanguageContainer
+          setLanguage={this.setLanguage}
+          chatId={this.props.chat.id}
+        />
       </div>
     );
   }

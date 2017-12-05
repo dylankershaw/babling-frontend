@@ -20,7 +20,22 @@ class SelectLanguageContainer extends React.Component {
 
   onChange = ev => {
     this.props.setLanguage(ev.target.value);
+    this.patchChat(ev.target.value);
   };
+
+  patchChat(language) {
+    fetch(
+      `https://babling-backend.herokuapp.com/api/v1/chats/${this.props.chatId}`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        method: "PATCH",
+        body: JSON.stringify({ languages: language })
+      }
+    ).then(resp => console.log(resp));
+  }
 
   render() {
     return (

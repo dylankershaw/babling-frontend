@@ -65,7 +65,11 @@ class ChatBoxContainer extends React.Component {
     return (
       <div>
         {this.state.messages.map(message => (
-          <Message key={message.id} message={message} />
+          <Message
+            key={message.id}
+            message={message}
+            selectedLanguage={this.props.selectedLanguage}
+          />
         ))}
       </div>
     );
