@@ -16,7 +16,7 @@ class AuthContainer extends React.Component {
   //// when adding user auth, update this fnc so it doesn't fetch the entire users list
   // fetches all users then logs in the appropriate user based on username
   fetchUser = username => {
-    fetch("http://localhost:3000/api/v1/users")
+    fetch("https://babling-backend.herokuapp.com/api/v1/users")
       .then(resp => resp.json())
       .then(users => findUser(users, username), username);
 

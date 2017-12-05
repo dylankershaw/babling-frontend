@@ -9,7 +9,7 @@ class ChatBoxContainer extends React.Component {
 
   // fetches a message then calls pushMessage on it
   fetchMessage = id => {
-    fetch(`http://localhost:3000/api/v1/messages/${id}`)
+    fetch(`https://babling-backend.herokuapp.com/api/v1/messages/${id}`)
       .then(resp => resp.json())
       .then(message => {
         this.pushMessage(message);
@@ -40,7 +40,7 @@ class ChatBoxContainer extends React.Component {
 
   fetchChat(chatId) {
     // get chat from api
-    fetch(`http://localhost:3000/api/v1/chats/${chatId}`)
+    fetch(`https://babling-backend.herokuapp.com/api/v1/chats/${chatId}`)
       .then(resp => resp.json())
       .then(
         // chat => chat.messages.map(message => console.log(message))
