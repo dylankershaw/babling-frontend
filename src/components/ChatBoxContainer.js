@@ -7,6 +7,7 @@ class ChatBoxContainer extends React.Component {
     this.state = { messages: [] };
   }
 
+  // fetches a message then calls pushMessage on it
   fetchMessage = id => {
     fetch(`https://babling-backend.herokuapp.com/api/v1/messages/${id}`)
       .then(resp => resp.json())
@@ -15,15 +16,15 @@ class ChatBoxContainer extends React.Component {
       });
   };
 
+  // checks to see if a message is already in state, then pushes it to state.messages if needed
+  // sort messages by id
   pushMessage = message => {
-    // const newMessages = this.state.messages.concat(message);
     let messages = this.state.messages;
     if (!this.containsMessage(message, this.state.messages)) {
-      // debugger;
       messages.push(message);
     }
     messages.sort(function(a, b) {
-      return a.created_at - b.created_at;
+      return a.id - b.id;
     });
     this.setState({ messages });
   };
