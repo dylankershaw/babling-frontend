@@ -4,7 +4,9 @@ import Message from "./Message";
 class ChatBoxContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [] };
+    this.state = {
+      messages: []
+    };
   }
 
   // fetches a message then calls pushMessage on it
@@ -31,7 +33,10 @@ class ChatBoxContainer extends React.Component {
 
   containsMessage(message, messages) {
     for (let i = 0; i < messages.length; i++) {
-      if (messages[i].id === message.id) {
+      if (
+        messages[i].id === message.id &&
+        messages[i].translations.length === message.translations.length
+      ) {
         return true;
       }
     }
@@ -61,6 +66,10 @@ class ChatBoxContainer extends React.Component {
       }
     }, 1000);
   };
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   debugger;
+  // }
 
   render() {
     return (
