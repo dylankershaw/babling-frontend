@@ -53,12 +53,12 @@ class ChatBoxContainer extends React.Component {
     this.props.chat.messages.map(message => {
       this.fetchMessage(message.id);
     });
-    // setInterval(this.fetchChat(this.props.chat.id), 1000);
-    // console.log(this.props);
     setInterval(() => {
-      // console.log("Hello");
-      // console.log(this.props.chat.id);
-      this.fetchChat(this.props.chat.id);
+      // only trigger if kill is false
+      if (!this.props.kill) {
+        console.log("fetching chat");
+        this.fetchChat(this.props.chat.id);
+      }
     }, 1000);
   };
 

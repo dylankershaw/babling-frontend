@@ -9,9 +9,14 @@ class ChatroomContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedLanguage: "en"
+      selectedLanguage: "en",
+      kill: false
     };
   }
+
+  killToggle = () => {
+    this.setState({ kill: !this.state.kill });
+  };
 
   setLanguage = language => {
     this.setState({ selectedLanguage: language });
@@ -31,6 +36,7 @@ class ChatroomContainer extends React.Component {
         <ChatBoxContainer
           chat={this.props.chat}
           selectedLanguage={this.state.selectedLanguage}
+          kill={this.state.kill}
         />
         <MessageInput
           chatId={this.props.chat.id}
@@ -43,6 +49,13 @@ class ChatroomContainer extends React.Component {
           setLanguage={this.setLanguage}
           chatId={this.props.chat.id}
         />
+        <button
+          onClick={() => {
+            this.killToggle();
+          }}
+        >
+          💀
+        </button>
       </div>
     );
   }
