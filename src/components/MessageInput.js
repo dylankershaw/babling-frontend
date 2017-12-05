@@ -10,7 +10,7 @@ const MessageInput = ({ chatId, senderName, selectedLanguage }) => {
 
   const postMessage = (chatId, messageText, language, senderName) => {
     // create a new message with chatId and senderName
-    fetch("https://babling-backend.herokuapp.com/api/v1/messages/", {
+    fetch("http://localhost:3000/api/v1/messages/", {
       // fetch("http://localhost:3000/api/v1/messages/", {
       method: "POST",
       body: JSON.stringify({
@@ -23,7 +23,7 @@ const MessageInput = ({ chatId, senderName, selectedLanguage }) => {
 
   const postTranslation = (messageText, language) => {
     // create translation with messageText and language
-    fetch("https://babling-backend.herokuapp.com/api/v1/translations/", {
+    fetch("http://localhost:3000/api/v1/translations/", {
       // fetch("http://localhost:3000/api/v1/translations/", {
       method: "POST",
       body: JSON.stringify({

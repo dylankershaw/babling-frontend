@@ -50,6 +50,7 @@ class App extends Component {
   };
 
   render() {
+    // returns true if user is logged in & redirect is on & there is no chat
     if (
       Object.keys(this.state.user).length > 0 &&
       this.state.redirect === true &&
@@ -62,6 +63,7 @@ class App extends Component {
           <Redirect to="/chat-selector" />
         </Router>
       );
+      // return true if there is a chat & redirect is on
     } else if (
       Object.keys(this.state.chat).length > 0 &&
       this.state.redirect === true
@@ -72,18 +74,30 @@ class App extends Component {
           <Redirect to="/chatroom" />
         </Router>
       );
+      // returns true if user is not logged in not on root
+    } else if (
+      Object.keys(this.state.user).length === 0 &&
+      this.props.location.split("/").slice(-1)[0] !== ""
+    ) {
+      return (
+        <Router>
+          <div>
+            <Redirect to="/" />
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <AuthContainer
+                  {...props}
+                  setUser={this.setUser}
+                  redirect={this.redirect}
+                />
+              )}
+            />
+          </div>
+        </Router>
+      );
     }
-    // } else if (
-    //   //// need to make this work
-    //   Object.keys(this.state.user).length === 0 &&
-    //   this.props.location.split("/").slice(-1)[0] !== ""
-    // ) {
-    //   console.log("not logged in");
-    //   // return (
-    //   //   <Router>
-    //   //     <Redirect to="/" />
-    //   //   </Router>
-    //   // );
 
     return (
       <Router>

@@ -6,6 +6,10 @@ const Message = ({ message, selectedLanguage }) => {
   const translation = message.translations.find(translation => {
     return translation.language === selectedLanguage;
   });
+
+  if (translation == undefined) {
+    return <div>NOT TRANSLATED</div>;
+  }
   return (
     <div>{`${timestamp} ${message.sender_name}: ${translation.text}`}</div>
   );

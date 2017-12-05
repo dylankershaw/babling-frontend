@@ -3,7 +3,7 @@ import React from "react";
 const Signup = props => {
   // const postUser = () => {
   //   debugger;
-  //   fetch("https://babling-backend.herokuapp.com/api/v1/users", {
+  //   fetch("http://localhost:3000/api/v1/users", {
   //     method: "POST",
   //     body: JSON.stringify({
   //       username: "testusername2",
