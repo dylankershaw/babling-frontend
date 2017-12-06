@@ -24,7 +24,7 @@ class SelectLanguageContainer extends React.Component {
   };
 
   patchChat(language) {
-    fetch(`http://localhost:3000/api/v1/chats/${this.props.chatId}`, {
+    fetch(`https://babling-backend.herokuapp.com/api/v1/chats/${this.props.chatId}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
