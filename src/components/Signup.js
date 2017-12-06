@@ -1,19 +1,6 @@
 import React from "react";
 
 const Signup = props => {
-  // const postUser = () => {
-  //   debugger;
-  //   fetch("http://localhost:3000/api/v1/users", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       username: "testusername2",
-  //       password: "password"
-  //     }),
-  //     headers: { "Content-Type": "application/json" }
-  //   }).then(resp => console.log(resp));
-  //   // .then call props.fetchUser(username)
-  // };
-
   return (
     <div>
       <form>

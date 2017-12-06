@@ -98,6 +98,9 @@ class App extends Component {
               render={props => (
                 <AuthContainer
                   {...props}
+                  ref={instance => {
+                    this.authContainer = instance;
+                  }}
                   setUser={this.setUser}
                   redirect={this.redirect}
                 />
@@ -134,6 +137,7 @@ class App extends Component {
                 user={this.state.user}
                 setChat={this.setChat}
                 redirect={this.redirect}
+                setUser={this.setUser}
               />
             )}
           />
@@ -147,6 +151,7 @@ class App extends Component {
                 chat={this.state.chat}
                 redirect={this.redirect}
                 clearChat={this.clearChat}
+                setUser={this.setUser}
               />
             )}
           />

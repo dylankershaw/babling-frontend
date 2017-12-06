@@ -1,11 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Logout = ({ user }) => {
+const Logout = ({ user, setUser }) => {
   return (
     <div>
-      Welcome {user.username}
-      <Link to={"/"}> Logout </Link>
+      Welcome <b>{user.username} </b>
+      <br />
+      <Link
+        to={"/"}
+        onClick={() => {
+          setUser({});
+        }}
+      >
+        Logout
+      </Link>
     </div>
   );
 };

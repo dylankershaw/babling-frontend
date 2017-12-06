@@ -29,7 +29,7 @@ class ChatroomContainer extends React.Component {
   render() {
     return (
       <div>
-        <Logout user={this.props.user} />
+        <Logout user={this.props.user} setUser={this.props.setUser} />
         <br />
         <ChatsButton clearChat={this.props.clearChat} />
         <br />
