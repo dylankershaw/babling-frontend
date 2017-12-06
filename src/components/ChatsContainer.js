@@ -9,9 +9,6 @@ const ChatsContainer = ({ user, setChat, redirect }) => {
     });
   }
 
-  //// need to safeguard against a user having no chats (cannot map on undefined)
-  user.chats.map(chat => {});
-
   return (
     <div>
       <h3>Your Chats</h3>

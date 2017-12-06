@@ -1,26 +1,32 @@
 import React from "react";
 import { Input } from "semantic-ui-react";
 
-const Signup = props => {
-  // const postUser = () => {
-  //   debugger;
-  //   fetch("https://babling-backend.herokuapp.com/api/v1/users", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       username: "testusername2",
-  //       password: "password"
-  //     }),
-  //     headers: { "Content-Type": "application/json" }
-  //   }).then(resp => console.log(resp));
-  //   // .then call props.fetchUser(username)
-  // };
+const Signup = ({ changeSelection, fetchUser }) => {
+  const handleSubmit = ev => {
+    ev.preventDefault(); // is this necessary?
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    postUser(username.toLowerCase(), password);
+  };
+
+  const postUser = (username, password) => {
+    fetch("https://babling-backend.herokuapp.com/api/v1/users/", {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password
+      }),
+      headers: { "Content-Type": "application/json" }
+    }).then(resp => fetchUser(username, password));
+  };
 
   return (
     <div>
       <br />
       <br />
+      <h3>Sign Up</h3>
       <div align="center">
-        <form>
+        <form onSubmit={ev => handleSubmit(ev)}>
           <label htmlFor="username">Username: </label>
           <Input id="username" />
           <br />
@@ -35,7 +41,7 @@ const Signup = props => {
         <div>
           <span>Already have an account? </span>
           <b>
-            <a onClick={() => props.changeSelection("Login")}>Log in</a>
+            <a onClick={() => changeSelection("Login")}>Log in</a>
           </b>
         </div>
       </div>

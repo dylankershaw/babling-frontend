@@ -1,14 +1,14 @@
 import React from "react";
 import Logout from "./Logout";
 import ChatsContainer from "./ChatsContainer";
-// import NewChatContainer from './NewChatContainer;'
+import NewChatContainer from "./NewChatContainer";
 
-const ChatSelector = ({ user, setChat, redirect }) => {
+const ChatSelector = ({ user, setChat, redirect, setUser }) => {
   return (
     <div>
-      <Logout user={user} />
+      <Logout user={user} setUser={setUser} />
       <ChatsContainer user={user} setChat={setChat} redirect={redirect} />
-      {/* <NewChatContainer/> */}
+      <NewChatContainer user={user} />
     </div>
   );
 };

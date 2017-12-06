@@ -9,32 +9,54 @@ class AuthContainer extends React.Component {
     super(props);
 
     this.state = {
-      selection: "Login"
+      selection: "Login",
+      invalidLogin: false
     };
   }
 
-  //// when adding user auth, update this fnc so it doesn't fetch the entire users list
-  // fetches all users then logs in the appropriate user based on username
-  fetchUser = username => {
-    fetch("https://babling-backend.herokuapp.com/api/v1/users")
+  // fetches the user with their username and password
+  fetchUser = (username, password) => {
+    fetch(
+      `https://babling-backend.herokuapp.com/api/v1/users/login/${username}/${
+        password
+      }`
+    )
       .then(resp => resp.json())
-      .then(users => findUser(users, username), username);
-
-    const findUser = (users, username) => {
-      const user = users.find(user => {
-        return user.username.toLowerCase() === username.toLowerCase();
-      });
-      this.props.setUser(user);
-      this.props.redirect();
-    };
+      .then(user => this.props.setUser(user));
   };
 
   changeSelection = selection => {
     this.setState({ selection });
   };
 
+  invalidLogin = () => {
+    console.log("invalid login");
+    this.setState({ invalidLogin: true });
+  };
+
+  validLogin = () => {
+    this.setState({ invalidLogin: false });
+  };
+
+  componentWillMount() {
+    if (this.state.invalidLogin) {
+      this.setState({ invalidLogin: false });
+    }
+  }
+
   render() {
     if (this.state.selection === "Login") {
+      if (this.state.invalidLogin) {
+        return (
+          <div>
+            <Login
+              changeSelection={this.changeSelection}
+              fetchUser={this.fetchUser}
+            />
+            <p>Invalid username or password.</p>
+          </div>
+        );
+      }
       return (
         <Login
           changeSelection={this.changeSelection}
