@@ -6,16 +6,16 @@ class SelectLanguageContainer extends React.Component {
   }
 
   languages = [
-    { text: "English", id: "en", key: 0 },
-    { text: "Arabic", id: "ar", key: 1 },
-    { text: "French", id: "fr", key: 2 },
-    { text: "German", id: "de", key: 3 },
-    { text: "Icelandic", id: "is", key: 4 },
-    { text: "Irish", id: "ga", key: 5 },
-    { text: "Polish", id: "pl", key: 6 },
-    { text: "Malayalam", id: "ml", key: 7 },
-    { text: "Spanish", id: "es", key: 8 },
-    { text: "Yiddish", id: "yi", key: 9 }
+    { longform: "English", shortform: "en" },
+    { longform: "Arabic", shortform: "ar" },
+    { longform: "French", shortform: "fr" },
+    { longform: "German", shortform: "de" },
+    { longform: "Icelandic", shortform: "is" },
+    { longform: "Irish", shortform: "ga" },
+    { longform: "Polish", shortform: "pl" },
+    { longform: "Malayalam", shortform: "ml" },
+    { longform: "Spanish", shortform: "es" },
+    { longform: "Yiddish", shortform: "yi" }
   ];
 
   onChange = ev => {
@@ -24,17 +24,14 @@ class SelectLanguageContainer extends React.Component {
   };
 
   patchChat(language) {
-    fetch(
-      `https://babling-backend.herokuapp.com/api/v1/chats/${this.props.chatId}`,
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        method: "PATCH",
-        body: JSON.stringify({ languages: language })
-      }
-    ).then(resp => console.log(resp));
+    fetch(`http://localhost:3000/api/v1/chats/${this.props.chatId}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "PATCH",
+      body: JSON.stringify({ languages: language })
+    });
   }
 
   render() {
@@ -46,7 +43,11 @@ class SelectLanguageContainer extends React.Component {
           }}
         >
           {this.languages.map(language => {
-            return <option value={language.id}>{language.text}</option>;
+            return (
+              <option key={language.shortform} value={language.shortform}>
+                {language.longform}
+              </option>
+            );
           })}
         </select>
       </div>
