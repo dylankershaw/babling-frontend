@@ -4,7 +4,8 @@ const Login = props => {
   const handleSubmit = ev => {
     ev.preventDefault(); // is this necessary?
     const username = document.getElementById("username").value;
-    props.fetchUser(username);
+    const password = document.getElementById("password").value;
+    props.fetchUser(username, password);
   };
 
   return (

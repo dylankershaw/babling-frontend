@@ -38,6 +38,7 @@ class App extends Component {
   setUser = user => {
     console.log("setting user");
     this.setState({ user });
+    this.redirect();
   };
 
   redirect = () => {
