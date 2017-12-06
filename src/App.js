@@ -36,19 +36,27 @@ class App extends Component {
   };
 
   setUser = user => {
-    console.log("setting user");
-    this.setState({ user });
-    this.redirect();
+    if (user.id) {
+      this.setState({ user });
+      this.redirect();
+    } else {
+      this.authContainer.invalidLogin();
+    }
   };
 
   redirect = () => {
     this.setState({ redirect: true });
   };
 
-  //// does this need to be in a callback or can it happen inline?
   redirectOff = () => {
     this.setState({ redirect: false });
   };
+
+  // componentWillMount() {
+  //   if (this.state.redirect) {
+  //     this.setState({ redirect: false });
+  //   }
+  // }
 
   render() {
     // returns true if user is logged in & redirect is on & there is no chat
@@ -109,6 +117,9 @@ class App extends Component {
             render={props => (
               <AuthContainer
                 {...props}
+                ref={instance => {
+                  this.authContainer = instance;
+                }}
                 setUser={this.setUser}
                 redirect={this.redirect}
               />

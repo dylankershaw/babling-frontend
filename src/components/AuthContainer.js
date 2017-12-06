@@ -9,7 +9,8 @@ class AuthContainer extends React.Component {
     super(props);
 
     this.state = {
-      selection: "Login"
+      selection: "Login",
+      invalidLogin: false
     };
   }
 
@@ -24,8 +25,34 @@ class AuthContainer extends React.Component {
     this.setState({ selection });
   };
 
+  invalidLogin = () => {
+    console.log("invalid login");
+    this.setState({ invalidLogin: true });
+  };
+
+  validLogin = () => {
+    this.setState({ invalidLogin: false });
+  };
+
+  componentWillMount() {
+    if (this.state.invalidLogin) {
+      this.setState({ invalidLogin: false });
+    }
+  }
+
   render() {
     if (this.state.selection === "Login") {
+      if (this.state.invalidLogin) {
+        return (
+          <div>
+            <Login
+              changeSelection={this.changeSelection}
+              fetchUser={this.fetchUser}
+            />
+            <p>Invalid username or password.</p>
+          </div>
+        );
+      }
       return (
         <Login
           changeSelection={this.changeSelection}
