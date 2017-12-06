@@ -1,4 +1,5 @@
 import React from "react";
+import { Input } from "semantic-ui-react";
 
 const MessageInput = ({ chatId, senderName, selectedLanguage }) => {
   const handleSubmit = ev => {
@@ -44,8 +45,8 @@ const MessageInput = ({ chatId, senderName, selectedLanguage }) => {
           handleSubmit(ev);
         }}
       >
-        <input id="message-text" type="text" placeholder="enter your message" />
-        <input type="submit" />
+        <Input id="message-text" type="text" placeholder="enter your message" />
+        <input type="submit" class="ui violet inverted button" value="SEND" />
       </form>
     </div>
   );

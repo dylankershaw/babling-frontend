@@ -43,7 +43,7 @@ class ChatroomContainer extends React.Component {
           senderName={this.props.user.username}
           selectedLanguage={this.state.selectedLanguage}
         />
-        <br />
+
         <br />
         <SelectLanguageContainer
           setLanguage={this.setLanguage}
@@ -55,6 +55,8 @@ class ChatroomContainer extends React.Component {
           }}
         >
           💀
+          {/* <i class="cn flag" /> */}
+          {/*  above we can get the flag for any country with the country code*/}
         </button>
       </div>
     );

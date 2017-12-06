@@ -1,5 +1,6 @@
 import React from "react";
 import Message from "./Message";
+import { Divider, Segment } from "semantic-ui-react";
 
 class ChatBoxContainer extends React.Component {
   constructor(props) {
@@ -87,15 +88,18 @@ class ChatBoxContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.messages.map(message => (
-          <Message
-            key={message.id}
-            message={message}
-            selectedLanguage={this.props.selectedLanguage}
-          />
-        ))}
-      </div>
+      // sliced the messages to only the last 20
+      <Segment size="huge">
+        {this.state.messages
+          .slice(-20)
+          .map(message => (
+            <Message
+              key={message.id}
+              message={message}
+              selectedLanguage={this.props.selectedLanguage}
+            />
+          ))}
+      </Segment>
     );
   }
 }

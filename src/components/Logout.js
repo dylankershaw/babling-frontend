@@ -4,8 +4,14 @@ import { Link } from "react-router-dom";
 const Logout = ({ user }) => {
   return (
     <div>
-      Welcome {user.username}
-      <Link to={"/"}> Logout </Link>
+      <h2 align="right">
+        {" "}
+        Welcome {user.username}
+        <Link to={"/"}>
+          {" "}
+          <h3>Logout </h3>
+        </Link>{" "}
+      </h2>
     </div>
   );
 };

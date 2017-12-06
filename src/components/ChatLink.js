@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
 const ChatLink = ({ id, username, setChat, redirect }) => {
   const fetchChat = id => {
@@ -13,7 +14,11 @@ const ChatLink = ({ id, username, setChat, redirect }) => {
     fetchChat(id);
   };
 
-  return <button onClick={ev => handleClick(ev)}>{username}</button>;
+  return (
+    <Button inverted color="orange" onClick={ev => handleClick(ev)}>
+      {username}
+    </Button>
+  );
 };
 
 export default ChatLink;

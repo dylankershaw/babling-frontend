@@ -1,4 +1,5 @@
 import React from "react";
+import { Select, Option } from "semantic-ui-react";
 
 class SelectLanguageContainer extends React.Component {
   constructor(props) {
@@ -24,20 +25,24 @@ class SelectLanguageContainer extends React.Component {
   };
 
   patchChat(language) {
-    fetch(`https://babling-backend.herokuapp.com/api/v1/chats/${this.props.chatId}`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      method: "PATCH",
-      body: JSON.stringify({ languages: language })
-    });
+    fetch(
+      `https://babling-backend.herokuapp.com/api/v1/chats/${this.props.chatId}`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        method: "PATCH",
+        body: JSON.stringify({ languages: language })
+      }
+    );
   }
 
   render() {
     return (
       <div>
         <select
+          className="ui selection dropdown"
           onChange={ev => {
             this.onChange(ev);
           }}

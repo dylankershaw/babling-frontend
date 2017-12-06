@@ -1,4 +1,5 @@
 import React from "react";
+import { Input } from "semantic-ui-react";
 
 const Signup = props => {
   // const postUser = () => {
@@ -16,21 +17,27 @@ const Signup = props => {
 
   return (
     <div>
-      <form>
-        <label htmlFor="username">Username: </label>
-        <input id="username" />
-        <br />
-        <label htmlFor="password">Password: </label>
-        <input id="password" />
-        <br />
-        <input type="submit" value="Sign Up" />
-      </form>
       <br />
-      <div>
-        <span>Already have an account? </span>
-        <b>
-          <a onClick={() => props.changeSelection("Login")}>Log in</a>
-        </b>
+      <br />
+      <div align="center">
+        <form>
+          <label htmlFor="username">Username: </label>
+          <Input id="username" />
+          <br />
+          <br />
+          <label htmlFor="password">Password: </label>
+          <Input id="password" />
+          <br />
+          <br />
+          <input type="submit" class="ui blue button" value="SIGN UP" />
+        </form>
+        <br />
+        <div>
+          <span>Already have an account? </span>
+          <b>
+            <a onClick={() => props.changeSelection("Login")}>Log in</a>
+          </b>
+        </div>
       </div>
     </div>
   );
