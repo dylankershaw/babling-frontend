@@ -1,15 +1,16 @@
 import React from "react";
 
-const Login = props => {
+const Login = ({ changeSelection, fetchUser }) => {
   const handleSubmit = ev => {
     ev.preventDefault(); // is this necessary?
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    props.fetchUser(username, password);
+    fetchUser(username.toLowerCase(), password);
   };
 
   return (
     <div>
+      <h3>Log In</h3>
       <form onSubmit={ev => handleSubmit(ev)}>
         <label htmlFor="username">Username: </label>
         <input id="username" />
@@ -23,7 +24,7 @@ const Login = props => {
       <div>
         <span>Don't have an account yet? </span>
         <b>
-          <a onClick={() => props.changeSelection("Signup")}>Sign up</a>
+          <a onClick={() => changeSelection("Signup")}>Sign up</a>
         </b>
       </div>
     </div>
