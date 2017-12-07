@@ -73,18 +73,19 @@ class ChatBoxContainer extends React.Component {
     this.props.chat.messages.map(message => {
       this.fetchMessage(message.id);
     });
-    setInterval(() => {
-      // only trigger if kill toggle is disengaged
-      if (!this.props.kill) {
-        console.log("fetching chat");
+    this.myInterval = setInterval(() => {
+      // only trigger if kill toggle is disengaged and a chat is selected
+      if (!this.props.kill && this.props.chat) {
+        console.log(this.props.chat.id);
         this.fetchChat(this.props.chat.id);
       }
     }, 1000);
   };
 
-  // componentWillUpdate(nextProps, nextState) {
-  //   debugger;
-  // }
+  componentWillUnmount() {
+    this.props.clearChat();
+    clearInterval(this.myInterval);
+  }
 
   render() {
     return (

@@ -37,6 +37,7 @@ class ChatroomContainer extends React.Component {
           chat={this.props.chat}
           selectedLanguage={this.state.selectedLanguage}
           kill={this.state.kill}
+          clearChat={this.props.clearChat}
         />
         <MessageInput
           chatId={this.props.chat.id}
