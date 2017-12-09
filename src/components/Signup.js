@@ -22,9 +22,8 @@ const Signup = ({ changeSelection, fetchUser }) => {
 
   return (
     <div>
-      <br />
-      <br />
       <h3>Sign Up</h3>
+      <br />
       <div align="center">
         <form onSubmit={ev => handleSubmit(ev)}>
           <label htmlFor="username">Username: </label>
@@ -32,7 +31,7 @@ const Signup = ({ changeSelection, fetchUser }) => {
           <br />
           <br />
           <label htmlFor="password">Password: </label>
-          <Input id="password" />
+          <Input type="password" id="password" />
           <br />
           <br />
           <input type="submit" class="ui blue button" value="SIGN UP" />

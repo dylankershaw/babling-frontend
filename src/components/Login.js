@@ -12,15 +12,15 @@ const Login = ({ changeSelection, fetchUser }) => {
   return (
     <div>
       <h3>Log In</h3>
+      <br />
       <form onSubmit={ev => handleSubmit(ev)}>
-        <br />
         <div align="center">
           <label htmlFor="username">Username: </label>
           <Input id="username" />
           <br />
           <br />
           <label htmlFor="password">Password: </label>
-          <Input id="password" />
+          <Input type="password" id="password" />
           <br />
           <br />
           <input type="submit" class="ui red inverted button" value="LOG IN" />
