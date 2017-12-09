@@ -76,7 +76,7 @@ class ChatBoxContainer extends React.Component {
     this.myInterval = setInterval(() => {
       // only trigger if kill toggle is disengaged and a chat is selected
       if (!this.props.kill && this.props.chat) {
-        console.log(this.props.chat.id);
+        // console.log(this.props.chat.id);
         this.fetchChat(this.props.chat.id);
       }
     }, 1000);

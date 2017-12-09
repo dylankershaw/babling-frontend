@@ -8,6 +8,7 @@ const ChatSelector = ({ user, setChat, redirect, setUser }) => {
     <div>
       <Logout user={user} setUser={setUser} />
       <ChatsContainer user={user} setChat={setChat} redirect={redirect} />
+      <br />
       <NewChatContainer user={user} />
     </div>
   );

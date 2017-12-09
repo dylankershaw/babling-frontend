@@ -23,7 +23,7 @@ class ChatroomContainer extends React.Component {
   };
 
   componentDidUpdate() {
-    console.log(this.state.selectedLanguage);
+    // console.log(this.state.selectedLanguage);
   }
 
   render() {
@@ -50,15 +50,13 @@ class ChatroomContainer extends React.Component {
           setLanguage={this.setLanguage}
           chatId={this.props.chat.id}
         />
-        <button
+        {/* <button
           onClick={() => {
             this.killToggle();
           }}
         >
           💀
-          {/* <i class="cn flag" /> */}
-          {/*  above we can get the flag for any country with the country code*/}
-        </button>
+        </button> */}
       </div>
     );
   }

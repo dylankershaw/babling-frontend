@@ -3,7 +3,7 @@ import { Input } from "semantic-ui-react";
 
 const Signup = ({ changeSelection, fetchUser }) => {
   const handleSubmit = ev => {
-    ev.preventDefault(); // is this necessary?
+    ev.preventDefault();
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     postUser(username.toLowerCase(), password);

@@ -30,7 +30,7 @@ const MessageInput = ({ chatId, senderName, selectedLanguage }) => {
         language: language
       }),
       headers: { "Content-Type": "application/json" }
-    }).then(resp => console.log(resp));
+    });
   };
 
   // check to see if there is a translation for each language within the chat

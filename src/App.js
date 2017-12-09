@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   setChat = chat => {
-    console.log("setting chat");
+    // console.log("setting chat");
     this.setState({ chat });
   };
 
@@ -66,7 +66,7 @@ class App extends Component {
       Object.keys(this.state.chat).length === 0
     ) {
       this.redirectOff();
-      console.log("logged in");
+      // console.log("logged in");
       return (
         <Router>
           <Redirect to="/chat-selector" />

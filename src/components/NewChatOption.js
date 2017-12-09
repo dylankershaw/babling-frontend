@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "semantic-ui-react";
 
 const NewChatOption = ({ user, chatUser }) => {
   const postChat = (user1, user2) => {
@@ -9,7 +10,7 @@ const NewChatOption = ({ user, chatUser }) => {
         user2id: user2.id
       }),
       headers: { "Content-Type": "application/json" }
-    }).then(resp => console.log(resp));
+    });
   };
 
   const handleClick = ev => {
@@ -19,7 +20,9 @@ const NewChatOption = ({ user, chatUser }) => {
 
   return (
     <div>
-      <button onClick={ev => handleClick(ev)}>{chatUser.username}</button>
+      <Button inverted color="orange" onClick={ev => handleClick(ev)}>
+        {chatUser.username}
+      </Button>
       <br />
     </div>
   );

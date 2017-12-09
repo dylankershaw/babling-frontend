@@ -30,7 +30,7 @@ class AuthContainer extends React.Component {
   };
 
   invalidLogin = () => {
-    console.log("invalid login");
+    // console.log("invalid login");
     this.setState({ invalidLogin: true });
   };
 
