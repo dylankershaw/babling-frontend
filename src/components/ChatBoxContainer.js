@@ -92,7 +92,7 @@ class ChatBoxContainer extends React.Component {
       // sliced the messages to only the last 20
       <Segment size="huge">
         {this.state.messages
-          .slice(-20)
+          .slice(-15)
           .map(message => (
             <Message
               key={message.id}

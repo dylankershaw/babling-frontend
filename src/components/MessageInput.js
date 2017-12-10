@@ -21,8 +21,10 @@ const MessageInput = ({ chatId, senderName, selectedLanguage }) => {
     }).then(resp => postTranslation(messageText, language));
   };
 
+  // create translation with messageText and language
   const postTranslation = (messageText, language) => {
-    // create translation with messageText and language
+    // trim message if too long
+    console.log(messageText.length);
     fetch("https://babling-backend.herokuapp.com/api/v1/translations/", {
       method: "POST",
       body: JSON.stringify({

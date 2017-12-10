@@ -58,6 +58,7 @@ class NewChatContainer extends React.Component {
               user={this.props.user}
               setChat={this.props.setChat}
               redirect={this.props.redirect}
+              key={user.id}
             />
           );
         })}

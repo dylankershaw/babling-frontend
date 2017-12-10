@@ -13,7 +13,12 @@ const Message = ({ message, selectedLanguage }) => {
 
   return (
     <div>
-      <b>{`${timestamp} ${message.sender_name}: `}</b>
+      <b>{`${
+        // adds a 0 to the minute if in single digits
+        timestamp.split(":")[1].length === 2
+          ? timestamp
+          : timestamp.split(":")[0] + ":0" + timestamp.split(":")[1]
+      } ${message.sender_name}: `}</b>
       {translation.text}
     </div>
   );

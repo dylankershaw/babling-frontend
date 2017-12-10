@@ -9,12 +9,12 @@ class SelectLanguageContainer extends React.Component {
   languages = [
     { longform: "English", shortform: "en" },
     { longform: "Arabic", shortform: "ar" },
+    { longform: "Chinese", shortform: "zh" },
     { longform: "French", shortform: "fr" },
     { longform: "German", shortform: "de" },
     { longform: "Icelandic", shortform: "is" },
     { longform: "Irish", shortform: "ga" },
     { longform: "Polish", shortform: "pl" },
-    { longform: "Malayalam", shortform: "ml" },
     { longform: "Spanish", shortform: "es" },
     { longform: "Yiddish", shortform: "yi" }
   ];
