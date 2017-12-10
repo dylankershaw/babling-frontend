@@ -32,6 +32,7 @@ class NewChatContainer extends React.Component {
 
     // returns true if two users have a common chat
     const sharedChatChecker = (user1, user2) => {
+      if (user1.id === user2.id) return true;
       let user1ChatIds = [];
       let sharedChatBool = false;
       user1.chats.map(chat => {
