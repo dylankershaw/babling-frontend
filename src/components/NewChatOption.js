@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 
-const NewChatOption = ({ user, chatUser }) => {
+const NewChatOption = ({ user, chatUser, setChat, redirect }) => {
   const postChat = (user1, user2) => {
     fetch(`https://babling-backend.herokuapp.com/api/v1/chats/`, {
       method: "POST",
@@ -10,7 +10,20 @@ const NewChatOption = ({ user, chatUser }) => {
         user2id: user2.id
       }),
       headers: { "Content-Type": "application/json" }
-    });
+    }).then(fetchAndSetLatestChat());
+  };
+
+  // fetches all chats then fetches then fetches and sets the last one
+  const fetchAndSetLatestChat = () => {
+    fetch("https://babling-backend.herokuapp.com/api/v1/chats/")
+      .then(resp => resp.json())
+      .then(json => fetchChat(json.slice(-1)[0].id));
+  };
+
+  const fetchChat = id => {
+    fetch(`https://babling-backend.herokuapp.com/api/v1/chats/${id}`)
+      .then(resp => resp.json())
+      .then(chat => (setChat(chat), redirect()));
   };
 
   const handleClick = ev => {

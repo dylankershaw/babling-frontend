@@ -51,7 +51,14 @@ class NewChatContainer extends React.Component {
       <div>
         <h3>New Chat</h3>
         {this.state.users.map(user => {
-          return <NewChatOption chatUser={user} user={this.props.user} />;
+          return (
+            <NewChatOption
+              chatUser={user}
+              user={this.props.user}
+              setChat={this.props.setChat}
+              redirect={this.props.redirect}
+            />
+          );
         })}
       </div>
     );
