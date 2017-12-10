@@ -41,11 +41,23 @@ class AuthContainer extends React.Component {
     }
   }
 
+  tagline = (
+    <div align="center">
+      <div>
+        <b>Babling</b>
+      </div>
+      <div>
+        <i>A Live Translation Chat App</i>
+      </div>
+    </div>
+  );
+
   render() {
     if (this.state.selection === "Login") {
       if (this.state.invalidLogin) {
         return (
           <div>
+            {this.tagline}
             <Login
               changeSelection={this.changeSelection}
               fetchUser={this.fetchUser}
@@ -57,17 +69,23 @@ class AuthContainer extends React.Component {
         );
       }
       return (
-        <Login
-          changeSelection={this.changeSelection}
-          fetchUser={this.fetchUser}
-        />
+        <div>
+          {this.tagline}
+          <Login
+            changeSelection={this.changeSelection}
+            fetchUser={this.fetchUser}
+          />
+        </div>
       );
     } else {
       return (
-        <Signup
-          changeSelection={this.changeSelection}
-          fetchUser={this.fetchUser}
-        />
+        <div>
+          {this.tagline}
+          <Signup
+            changeSelection={this.changeSelection}
+            fetchUser={this.fetchUser}
+          />
+        </div>
       );
     }
   }
