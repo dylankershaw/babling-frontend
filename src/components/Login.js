@@ -4,9 +4,11 @@ import { Input, Button } from "semantic-ui-react";
 const Login = ({ changeSelection, fetchUser }) => {
   const handleSubmit = ev => {
     ev.preventDefault(); // is this necessary?
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    fetchUser(username.toLowerCase(), password);
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+    fetchUser(username.value.toLowerCase(), password.value);
+    username.value = "";
+    password.value = "";
   };
 
   return (
