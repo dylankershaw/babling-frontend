@@ -23,7 +23,11 @@ const Login = ({ changeSelection, fetchUser }) => {
           <Input type="password" id="password" />
           <br />
           <br />
-          <input type="submit" class="ui red inverted button" value="LOG IN" />
+          <input
+            type="submit"
+            className="ui red inverted button"
+            value="LOG IN"
+          />
         </div>
       </form>
       <br />

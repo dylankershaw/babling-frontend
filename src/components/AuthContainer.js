@@ -21,8 +21,8 @@ class AuthContainer extends React.Component {
         password
       }`
     )
-      .then(resp => resp.json())
-      .then(user => this.props.setUser(user));
+      .then(resp => (resp.status === 200 ? resp.json() : this.invalidLogin()))
+      .then(json => (json ? this.props.setUser(json) : null));
   };
 
   changeSelection = selection => {
@@ -30,12 +30,8 @@ class AuthContainer extends React.Component {
   };
 
   invalidLogin = () => {
-    // console.log("invalid login");
+    console.log("invalid login");
     this.setState({ invalidLogin: true });
-  };
-
-  validLogin = () => {
-    this.setState({ invalidLogin: false });
   };
 
   componentWillMount() {

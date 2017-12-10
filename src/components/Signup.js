@@ -34,7 +34,7 @@ const Signup = ({ changeSelection, fetchUser }) => {
           <Input type="password" id="password" />
           <br />
           <br />
-          <input type="submit" class="ui blue button" value="SIGN UP" />
+          <input type="submit" className="ui blue button" value="SIGN UP" />
         </form>
         <br />
         <div>

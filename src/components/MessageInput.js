@@ -44,7 +44,11 @@ const MessageInput = ({ chatId, senderName, selectedLanguage }) => {
         }}
       >
         <Input id="message-text" type="text" placeholder="enter your message" />
-        <input type="submit" class="ui violet inverted button" value="SEND" />
+        <input
+          type="submit"
+          className="ui violet inverted button"
+          value="SEND"
+        />
       </form>
     </div>
   );
