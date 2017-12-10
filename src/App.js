@@ -147,6 +147,7 @@ class App extends Component {
             render={props => (
               <ChatroomContainer
                 {...props}
+                redirect={this.redirect}
                 user={this.state.user}
                 chat={this.state.chat}
                 redirect={this.redirect}

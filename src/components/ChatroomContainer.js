@@ -31,7 +31,10 @@ class ChatroomContainer extends React.Component {
       <div>
         <Logout user={this.props.user} setUser={this.props.setUser} />
         <br />
-        <ChatsButton clearChat={this.props.clearChat} />
+        <ChatsButton
+          clearChat={this.props.clearChat}
+          redirect={this.props.redirect}
+        />
         <br />
         <ChatBoxContainer
           chat={this.props.chat}

@@ -17,7 +17,17 @@ const NewChatOption = ({ user, chatUser, setChat, redirect }) => {
   const fetchAndSetLatestChat = () => {
     fetch("https://babling-backend.herokuapp.com/api/v1/chats/")
       .then(resp => resp.json())
-      .then(json => fetchChat(json.slice(-1)[0].id));
+      .then(json =>
+        fetchChat(
+          json
+            // orders chats by id
+            .sort(function(a, b) {
+              return a.id - b.id;
+            })
+            // selects the last one
+            .slice(-1)[0].id
+        )
+      );
   };
 
   const fetchChat = id => {
