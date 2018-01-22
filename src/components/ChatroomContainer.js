@@ -22,10 +22,6 @@ class ChatroomContainer extends React.Component {
     this.setState({ selectedLanguage: language });
   };
 
-  componentDidUpdate() {
-    // console.log(this.state.selectedLanguage);
-  }
-
   render() {
     return (
       <div>

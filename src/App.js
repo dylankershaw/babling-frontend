@@ -24,7 +24,6 @@ class App extends Component {
   }
 
   setChat = chat => {
-    // console.log("setting chat");
     this.setState({ chat });
   };
 
@@ -51,12 +50,6 @@ class App extends Component {
   redirectOff = () => {
     this.setState({ redirect: false });
   };
-
-  // componentWillMount() {
-  //   if (this.state.redirect) {
-  //     this.setState({ redirect: false });
-  //   }
-  // }
 
   render() {
     // returns true if user is logged in & redirect is on & there is no chat

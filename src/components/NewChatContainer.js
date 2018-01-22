@@ -20,10 +20,8 @@ class NewChatContainer extends React.Component {
     // finds all users who don't share a chat with this.props.user
     const findUsersForNewChat = fetchedUsers => {
       fetchedUsers.map(user => {
-        if (this.props.user) {
-          if (!sharedChatChecker(this.props.user, user)) {
-            users.push(user);
-          }
+        if (this.props.user && !sharedChatChecker(this.props.user, user)) {
+          users.push(user);
         }
       });
 
